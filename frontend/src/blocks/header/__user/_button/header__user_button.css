@@ -1,0 +1,15 @@
+.header__user_button {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+    color: #A9A9A9;
+    margin: 20px 0 0 0;
+    background: #000000;
+    border: none;
+  } 
+
+@media (max-width: 767px) {
+  .header__user_button {
+    margin: 20px auto 0 auto;
+  }
+}
