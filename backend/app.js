@@ -6,6 +6,9 @@ const rateLimit = require('express-rate-limit');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const error = require('./middlewares/error');
+const {
+  allowOrigin, allowOptions,
+} = require('./middlewares/cors');
 const NotFoundError = require('./errors/not-found-err');
 const {
   createUser, login,
@@ -54,6 +57,9 @@ app.post('/signin', celebrate({
 }), login);
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
+
+app.use(allowOrigin);
+app.use(allowOptions);
 
 app.use(errorLogger);
 
