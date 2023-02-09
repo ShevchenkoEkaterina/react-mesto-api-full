@@ -43,7 +43,11 @@ const createUser = (req, res, next) => {
       about: req.body.about,
       avatar: req.body.avatar,
     }))
-    .then((user) => res.status(201).send(user))
+    .then(({
+      email, name, about, avatar, _id,
+    }) => res.status(201).send({
+      email, name, about, avatar, _id,
+    }))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         return next(new SomethingWrongError('Переданы некорректные данные при создании пользователя.'));

@@ -28,11 +28,11 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+app.use(requestLogger);
+
 app.use(limiter);
 app.use(helmet());
 app.use(express.json());
-
-app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
